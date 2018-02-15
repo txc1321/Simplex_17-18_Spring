@@ -27,7 +27,7 @@ void Application::Display(void)
 	m_pMeshMngr->AddSkyboxToRenderList();
 	
 	//render list call
-	m_uRenderCallCount = m_pMeshMngr->Render();
+	//m_uRenderCallCount = m_pMeshMngr->Render();
 
 	//clear the render list
 	m_pMeshMngr->ClearRenderList();

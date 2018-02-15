@@ -1,10 +1,15 @@
 #include "AppClass.h"
 void Application::InitVariables(void)
 {
-	//init the mesh
+	////Change this to your name and email
+	//m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu";
+
+	////Alberto needed this at this position for software recording.
+	//m_pWindow->setPosition(sf::Vector2i(710, 0));
+
 	m_pMesh = new MyMesh();
-	//m_pMesh->GenerateCube(1.0f, C_WHITE);
-	m_pMesh->GenerateCube(1.0f, C_BLACK);
+	m_pMesh->GenerateCube();
+
 }
 void Application::Update(void)
 {
@@ -21,35 +26,14 @@ void Application::Display(void)
 {
 	// Clear the screen
 	ClearScreen();
-
-
-	//origin is 5th row, 6th column
-	for (int i = 8; i > 0; i--) {
-		for (int j = 11; j > 0; j--) {
-			if (layout[i][j] == 1) {
-				offsets.push_back
-			}
-		}
-	}
-
-	matrix4 m4View = m_pCameraMngr->GetViewMatrix();
-	matrix4 m4Projection = m_pCameraMngr->GetProjectionMatrix();
-	
-	matrix4 m4Scale = glm::scale(IDENTITY_M4, vector3(1.0f,1.0f,1.0f));
-	static float value = 0.0f;
-	matrix4 m4Translate = glm::translate(IDENTITY_M4, vector3(value, 2.0f, 3.0f));
-	value += 0.01f;
-
-	//matrix4 m4Model = m4Translate * m4Scale;
-	matrix4 m4Model = m4Scale * m4Translate;
-
-	m_pMesh->Render(m4Projection, m4View, m4Model);
 	
 	// draw a skybox
 	m_pMeshMngr->AddSkyboxToRenderList();
 	
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();
+
+	m_pMesh->Render(ToMatrix4(m_qArcBall), m_pCameraMngr->GetViewMatrix(), m_pCameraMngr->GetProjectionMatrix());
 
 	//clear the render list
 	m_pMeshMngr->ClearRenderList();
@@ -62,8 +46,11 @@ void Application::Display(void)
 }
 void Application::Release(void)
 {
-	SafeDelete(m_pMesh);
-
+	if (m_pMesh != nullptr)
+	{
+		delete m_pMesh;
+		m_pMesh = nullptr;
+	}
 	//release GUI
 	ShutdownGUI();
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.0
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{A7E7DB91-6013-4894-B0A8-C254F53E4940}"
 EndProject
@@ -91,6 +91,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C22_Physics", "C22_Physics\C22_Physics.vcxproj", "{58CB6636-1057-466F-AB91-BADB3395421A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "00_Sandbox", "00_Sandbox\00_Sandbox.vcxproj", "{BE52867A-92EA-479A-9F73-1E96168F9A7B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C10_MeshClass_Lecture", "C10_MeshClass_Lecture\C10_MeshClass_Lecture.vcxproj", "{7B261D53-3599-4177-A872-44E904FFD788}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -250,6 +252,10 @@ Global
 		{BE52867A-92EA-479A-9F73-1E96168F9A7B}.Debug|x86.Build.0 = Debug|Win32
 		{BE52867A-92EA-479A-9F73-1E96168F9A7B}.Release|x86.ActiveCfg = Release|Win32
 		{BE52867A-92EA-479A-9F73-1E96168F9A7B}.Release|x86.Build.0 = Release|Win32
+		{7B261D53-3599-4177-A872-44E904FFD788}.Debug|x86.ActiveCfg = Debug|Win32
+		{7B261D53-3599-4177-A872-44E904FFD788}.Debug|x86.Build.0 = Debug|Win32
+		{7B261D53-3599-4177-A872-44E904FFD788}.Release|x86.ActiveCfg = Release|Win32
+		{7B261D53-3599-4177-A872-44E904FFD788}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -293,6 +299,7 @@ Global
 		{AA74BEEF-2484-4B8A-A9F4-ACB122220189} = {E5B29A97-6872-426A-922D-E5C9D9668483}
 		{58CB6636-1057-466F-AB91-BADB3395421A} = {E5B29A97-6872-426A-922D-E5C9D9668483}
 		{BE52867A-92EA-479A-9F73-1E96168F9A7B} = {F69278C3-8319-449D-9607-6C3C9E84CC56}
+		{7B261D53-3599-4177-A872-44E904FFD788} = {E5B29A97-6872-426A-922D-E5C9D9668483}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB03C0C3-8F14-4422-9973-15CA22524188}

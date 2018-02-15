@@ -14,6 +14,19 @@ Date: 2017/05
 
 class Application
 {
+	bool layout[8][11] = {
+		{0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0},
+		{0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+		{0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+		{0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0},
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
+		{1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1},
+		{0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0}
+	};
+
+	std::vector<vector2> offsets;
+
 	MyMesh* m_pMesh = nullptr;
 	String m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu";
 
