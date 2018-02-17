@@ -1,4 +1,6 @@
 #include "MyMesh.h"
+#include <valarray>
+
 void MyMesh::Init(void)
 {
 	m_bBinded = false;
@@ -276,7 +278,45 @@ void MyMesh::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivisions,
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	vector3 point0(0.0f, a_fHeight / 2, 0.0f);
+	vector3 pointE(0.0f, -a_fHeight / 2, 0.0f);
+	std::vector<vector3> verts;
+
+	//create vertices
+	for(int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), -a_fHeight / 2, sin(angle));
+		verts.push_back(point);
+	}
+
+	//create side tris
+	for(int i = 0; i < a_nSubdivisions; i++)
+	{
+		if(i == a_nSubdivisions-1)
+		{
+			AddTri(verts[0], verts[a_nSubdivisions-1], point0);
+		}
+		else
+		{
+			AddTri(verts[i + 1], verts[i], point0);
+		}
+	}
+
+	//create floor tris
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddTri(verts[a_nSubdivisions - 1], verts[0], pointE);
+		}
+		else
+		{
+			AddTri(verts[i], verts[i + 1], pointE);
+		}
+	}
+
+	//GenerateCube(a_fRadius * 2.0f, a_v3Color);
 	// -------------------------------
 
 	// Adding information about color
@@ -300,6 +340,7 @@ void MyMesh::GenerateCylinder(float a_fRadius, float a_fHeight, int a_nSubdivisi
 	Init();
 
 	// Replace this with your code
+
 	GenerateCube(a_fRadius * 2.0f, a_v3Color);
 	// -------------------------------
 
