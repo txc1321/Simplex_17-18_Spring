@@ -12,7 +12,7 @@ void Application::InitVariables(void)
 	m_pCube = new MyMesh();
 	m_pCube->GenerateCube(1.0f, C_RED);
 	m_pCone = new MyMesh();
-	m_pCone->GenerateCone(0.5f, 1.0f, 7, C_ORANGE);
+	m_pCone->GenerateCone(0.5f, 1.0f, 10, C_ORANGE);
 	m_pCylinder = new MyMesh();
 	m_pCylinder->GenerateCylinder(0.5f, 1.0f, 7, C_YELLOW);
 	m_pTube = new MyMesh();
