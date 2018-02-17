@@ -341,7 +341,68 @@ void MyMesh::GenerateCylinder(float a_fRadius, float a_fHeight, int a_nSubdivisi
 
 	// Replace this with your code
 
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	vector3 point0(0.0f, a_fHeight / 2, 0.0f);
+	vector3 pointR(0.0f, a_fHeight / 2, 0.0f);
+	vector3 pointF(0.0f, -a_fHeight / 2, 0.0f);
+	std::vector<vector3> floorVerts;
+	std::vector<vector3> roofVerts;
+
+	//create floor vertices
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), -a_fHeight / 2, sin(angle));
+		floorVerts.push_back(point);
+	}
+
+	//create roof vertices
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), a_fHeight / 2, sin(angle));
+		roofVerts.push_back(point);
+	}
+
+	//create roof tris
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddTri(roofVerts[a_nSubdivisions - 1], pointR, roofVerts[0]);
+		}
+		else
+		{
+			AddTri(roofVerts[i], pointR, roofVerts[i + 1]);
+		}
+	}
+
+	//create side quads
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddQuad(roofVerts[a_nSubdivisions - 1], roofVerts[0], floorVerts[a_nSubdivisions - 1], floorVerts[0]);
+		}
+		else
+		{
+			AddQuad(roofVerts[i], roofVerts[i + 1], floorVerts[i], floorVerts[i + 1]);
+		}
+	}
+
+	//create floor tris
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddTri(floorVerts[a_nSubdivisions - 1], floorVerts[0], pointF);
+		}
+		else
+		{
+			AddTri(floorVerts[i], floorVerts[i + 1], pointF);
+		}
+	}
+
+	//GenerateCube(a_fRadius * 2.0f, a_v3Color);
 	// -------------------------------
 
 	// Adding information about color
