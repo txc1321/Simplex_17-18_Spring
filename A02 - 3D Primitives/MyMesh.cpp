@@ -585,6 +585,16 @@ void MyMesh::GenerateSphere(float a_fRadius, int a_nSubdivisions, vector3 a_v3Co
 	Init();
 
 	// Replace this with your code
+	/*
+	 * I was not able to create this section without the program crashing.
+	 * My plan of execution was to create a central top and bottom point, 
+	 * and use those to create a ring of tri for the first and last subdivision.
+	 * 
+	 * After that, I would create quads for remaining subdivisions, varying x,y, and z
+	 * by the radius. All these vertices would be created in a double loop and stored in
+	 * a vector of vectors holding vector3s.
+	 */
+
 	GenerateCube(a_fRadius * 2.0f, a_v3Color);
 	// -------------------------------
 
