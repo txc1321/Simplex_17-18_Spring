@@ -277,7 +277,7 @@ void MyMesh::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivisions,
 	Release();
 	Init();
 
-	// Replace this with your code
+	//Replace this with your code
 	vector3 point0(0.0f, a_fHeight / 2, 0.0f);
 	vector3 pointE(0.0f, -a_fHeight / 2, 0.0f);
 
