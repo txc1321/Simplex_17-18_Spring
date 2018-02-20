@@ -96,7 +96,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C10_MeshClass_S1", "C10_Mes
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C10_MeshClass_S2", "C10_MeshClass_S2\C10_MeshClass_S2.vcxproj", "{40A83E3A-0B83-4640-89C8-5685B9A01734}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E05 - LERP", "E05 - LERP\E05 - LERP.vcxproj", "{822E40D2-80A1-46EB-AD93-EC28C4F145ED}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E06 - LERP", "E06 - LERP\E06 - LERP.vcxproj", "{822E40D2-80A1-46EB-AD93-EC28C4F145ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
