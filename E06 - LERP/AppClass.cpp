@@ -2,7 +2,7 @@
 void Application::InitVariables(void)
 {
 	//Change this to your name and email
-	m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu";
+	m_sProgrammer = "Tim Carter - txc1321@rit.edu";
 
 	//Set the position and target of the camera
 	m_pCameraMngr->SetPositionTargetAndUp(vector3(5.0f,3.0f,15.0f), ZERO_V3, AXIS_Y);
@@ -53,13 +53,25 @@ void Application::Display(void)
 
 	//calculate the current position
 	vector3 v3CurrentPos;
-	
-
-
-
+	vector3 v3Start;
+	vector3 v3End;
 
 	//your code goes here
-	v3CurrentPos = vector3(0.0f, 0.0f, 0.0f);
+	float buffer = 0.5f;
+	float fPercentage = fTimer / buffer;
+	static int point = 0;
+
+	v3Start = m_stopsList[point];
+	v3End = m_stopsList[(point + 1) % m_stopsList.size()];
+
+	v3CurrentPos = glm::lerp(v3Start, v3End, fPercentage);
+
+	if(fPercentage >= 1.0f)
+	{
+		point++;
+		fTimer = m_pSystem->GetDeltaTime(uClock);
+		point %= m_stopsList.size();
+	}
 	//-------------------
 	
 
