@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.0
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{A7E7DB91-6013-4894-B0A8-C254F53E4940}"
 EndProject
@@ -95,6 +95,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C10_MeshClass_S1", "C10_MeshClass_S1\C10_MeshClass_S1.vcxproj", "{7B261D53-3599-4177-A872-44E904FFD788}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C10_MeshClass_S2", "C10_MeshClass_S2\C10_MeshClass_S2.vcxproj", "{40A83E3A-0B83-4640-89C8-5685B9A01734}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E06 - LERP", "E06 - LERP\E06 - LERP.vcxproj", "{822E40D2-80A1-46EB-AD93-EC28C4F145ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -262,6 +264,10 @@ Global
 		{40A83E3A-0B83-4640-89C8-5685B9A01734}.Debug|x86.Build.0 = Debug|Win32
 		{40A83E3A-0B83-4640-89C8-5685B9A01734}.Release|x86.ActiveCfg = Release|Win32
 		{40A83E3A-0B83-4640-89C8-5685B9A01734}.Release|x86.Build.0 = Release|Win32
+		{822E40D2-80A1-46EB-AD93-EC28C4F145ED}.Debug|x86.ActiveCfg = Debug|Win32
+		{822E40D2-80A1-46EB-AD93-EC28C4F145ED}.Debug|x86.Build.0 = Debug|Win32
+		{822E40D2-80A1-46EB-AD93-EC28C4F145ED}.Release|x86.ActiveCfg = Release|Win32
+		{822E40D2-80A1-46EB-AD93-EC28C4F145ED}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -307,6 +313,7 @@ Global
 		{BE52867A-92EA-479A-9F73-1E96168F9A7B} = {F69278C3-8319-449D-9607-6C3C9E84CC56}
 		{7B261D53-3599-4177-A872-44E904FFD788} = {E5B29A97-6872-426A-922D-E5C9D9668483}
 		{40A83E3A-0B83-4640-89C8-5685B9A01734} = {E5B29A97-6872-426A-922D-E5C9D9668483}
+		{822E40D2-80A1-46EB-AD93-EC28C4F145ED} = {A7E7DB91-6013-4894-B0A8-C254F53E4940}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB03C0C3-8F14-4422-9973-15CA22524188}
