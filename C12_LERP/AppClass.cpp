@@ -68,7 +68,7 @@ void Application::Display(void)
 	v3Start = v3Stop[route]; //start at the current route
 	v3End = v3Stop[(route + 1) % v3Stop.size()]; //end at route +1 (if overboard will restart from 0)
 	
-	//get the percentace
+	//get the percentage
 	float fTimeBetweenStops = 2.0;//in seconds
 	//map the value to be between 0.0 and 1.0
 	float fPercentage = MapValue(fTimer, 0.0f, fTimeBetweenStops, 0.0f, 1.0f);
@@ -82,7 +82,7 @@ void Application::Display(void)
 	{
 		route++; //go to the next route
 		fTimer = m_pSystem->GetDeltaTime(uClock);//restart the clock
-		route %= v3Stop.size();//make sure we are within boundries
+		route %= v3Stop.size();//make sure we are within boundaries
 	}
 		
 	// render the object
