@@ -1,4 +1,6 @@
 #include "MyMesh.h"
+#include <valarray>
+
 void MyMesh::Init(void)
 {
 	m_bBinded = false;
@@ -275,8 +277,50 @@ void MyMesh::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivisions,
 	Release();
 	Init();
 
-	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+	//Replace this with your code
+	vector3 point0(0.0f, a_fHeight / 2, 0.0f);
+	vector3 pointE(0.0f, -a_fHeight / 2, 0.0f);
+
+	point0 = point0 * vector3(a_fRadius, 1.0f, a_fRadius);
+	pointE = pointE * vector3(a_fRadius, 1.0f, a_fRadius);
+
+	std::vector<vector3> verts;
+
+	//create vertices
+	for(int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), -a_fHeight / 2, sin(angle));
+		verts.push_back(point * vector3(a_fRadius, 1.0f, a_fRadius));
+	}
+
+	//create side tris
+	for(int i = 0; i < a_nSubdivisions; i++)
+	{
+		if(i == a_nSubdivisions-1)
+		{
+			AddTri(verts[0], verts[a_nSubdivisions-1], point0);
+		}
+		else
+		{
+			AddTri(verts[i + 1], verts[i], point0);
+		}
+	}
+
+	//create floor tris
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddTri(verts[a_nSubdivisions - 1], verts[0], pointE);
+		}
+		else
+		{
+			AddTri(verts[i], verts[i + 1], pointE);
+		}
+	}
+
+	//GenerateCube(a_fRadius * 2.0f, a_v3Color);
 	// -------------------------------
 
 	// Adding information about color
@@ -300,7 +344,72 @@ void MyMesh::GenerateCylinder(float a_fRadius, float a_fHeight, int a_nSubdivisi
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fRadius * 2.0f, a_v3Color);
+
+	vector3 pointR(0.0f, a_fHeight / 2, 0.0f);
+	vector3 pointF(0.0f, -a_fHeight / 2, 0.0f);
+
+	pointR = pointR * vector3(a_fRadius, 1.0f, a_fRadius);
+	pointF = pointF * vector3(a_fRadius, 1.0f, a_fRadius);
+
+	std::vector<vector3> floorVerts;
+	std::vector<vector3> roofVerts;
+
+	//create floor vertices
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), -a_fHeight / 2, sin(angle));
+		floorVerts.push_back(point * vector3(a_fRadius, 1.0f, a_fRadius));
+	}
+
+	//create roof vertices
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), a_fHeight / 2, sin(angle));
+		roofVerts.push_back(point * vector3(a_fRadius, 1.0f, a_fRadius));
+	}
+
+	//create roof tris
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddTri(roofVerts[a_nSubdivisions - 1], pointR, roofVerts[0]);
+		}
+		else
+		{
+			AddTri(roofVerts[i], pointR, roofVerts[i + 1]);
+		}
+	}
+
+	//create side quads
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddQuad(roofVerts[a_nSubdivisions - 1], roofVerts[0], floorVerts[a_nSubdivisions - 1], floorVerts[0]);
+		}
+		else
+		{
+			AddQuad(roofVerts[i], roofVerts[i + 1], floorVerts[i], floorVerts[i + 1]);
+		}
+	}
+
+	//create floor tris
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddTri(floorVerts[a_nSubdivisions - 1], floorVerts[0], pointF);
+		}
+		else
+		{
+			AddTri(floorVerts[i], floorVerts[i + 1], pointF);
+		}
+	}
+
+	//GenerateCube(a_fRadius * 2.0f, a_v3Color);
 	// -------------------------------
 
 	// Adding information about color
@@ -330,7 +439,96 @@ void MyMesh::GenerateTube(float a_fOuterRadius, float a_fInnerRadius, float a_fH
 	Init();
 
 	// Replace this with your code
-	GenerateCube(a_fOuterRadius * 2.0f, a_v3Color);
+	std::vector<vector3> outerFloorVerts;
+	std::vector<vector3> innerFloorVerts;
+	std::vector<vector3> outerRoofVerts;
+	std::vector<vector3> innerRoofVerts;
+
+	//create outer floor vertices
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), -a_fHeight / 2, sin(angle));
+		outerFloorVerts.push_back(point * vector3(a_fOuterRadius, 1.0f, a_fOuterRadius));
+	}
+
+	//create inner floor vertices
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), -a_fHeight / 2, sin(angle));
+		innerFloorVerts.push_back(point * vector3(a_fInnerRadius, 1.0f, a_fInnerRadius));
+	}
+
+	//create outer roof vertices
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), a_fHeight / 2, sin(angle));
+		outerRoofVerts.push_back(point * vector3(a_fOuterRadius, 1.0f, a_fOuterRadius));
+	}
+
+	//create inner roof vertices
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 point(cos(angle), a_fHeight / 2, sin(angle));
+		innerRoofVerts.push_back(point * vector3(a_fInnerRadius, 1.0f, a_fInnerRadius));
+	}
+
+	//create roof quads
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddQuad(outerRoofVerts[0], outerRoofVerts[a_nSubdivisions-1], innerRoofVerts[0], innerRoofVerts[a_nSubdivisions-1]);
+		}
+		else
+		{
+			AddQuad(outerRoofVerts[i + 1], outerRoofVerts[i], innerRoofVerts[i + 1], innerRoofVerts[i]);
+		}
+	}
+
+	//create outer quads
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddQuad(outerRoofVerts[a_nSubdivisions - 1], outerRoofVerts[0], outerFloorVerts[a_nSubdivisions - 1], outerFloorVerts[0]);
+		}
+		else
+		{
+			AddQuad(outerRoofVerts[i], outerRoofVerts[i + 1], outerFloorVerts[i], outerFloorVerts[i+1]);
+		}
+	}
+
+	//create floor quads
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddQuad(outerFloorVerts[a_nSubdivisions - 1], outerFloorVerts[0], innerFloorVerts[a_nSubdivisions - 1], innerFloorVerts[0]);
+		}
+		else
+		{
+			AddQuad(outerFloorVerts[i], outerFloorVerts[i + 1], innerFloorVerts[i], innerFloorVerts[i + 1]);
+		}
+	}
+
+	//create inner quads
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddQuad(innerFloorVerts[a_nSubdivisions - 1], innerFloorVerts[0], innerRoofVerts[a_nSubdivisions - 1], innerRoofVerts[0]);
+		}
+		else
+		{
+			AddQuad(innerFloorVerts[i], innerFloorVerts[i + 1], innerRoofVerts[i], innerRoofVerts[i + 1]);
+		}
+	}
+
+	//GenerateCube(a_fOuterRadius * 2.0f, a_v3Color);
 	// -------------------------------
 
 	// Adding information about color
@@ -387,6 +585,16 @@ void MyMesh::GenerateSphere(float a_fRadius, int a_nSubdivisions, vector3 a_v3Co
 	Init();
 
 	// Replace this with your code
+	/*
+	 * I was not able to create this section without the program crashing.
+	 * My plan of execution was to create a central top and bottom point, 
+	 * and use those to create a ring of tri for the first and last subdivision.
+	 * 
+	 * After that, I would create quads for remaining subdivisions, varying x,y, and z
+	 * by the radius. All these vertices would be created in a double loop and stored in
+	 * a vector of vectors holding vector3s.
+	 */
+
 	GenerateCube(a_fRadius * 2.0f, a_v3Color);
 	// -------------------------------
 
