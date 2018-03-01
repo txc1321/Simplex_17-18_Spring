@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{A7E7DB91-6013-4894-B0A8-C254F53E4940}"
 EndProject
@@ -97,6 +97,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C10_MeshClass_S2", "C10_MeshClass_S2\C10_MeshClass_S2.vcxproj", "{40A83E3A-0B83-4640-89C8-5685B9A01734}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E06 - LERP", "E06 - LERP\E06 - LERP.vcxproj", "{822E40D2-80A1-46EB-AD93-EC28C4F145ED}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C15_ProjectionsTaughtInClass", "C15_ProjectionsTaughtInClass\C15_ProjectionsTaughtInClass.vcxproj", "{0D760210-5AB2-4F60-AB46-AA34756861F5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E09 - Projections", "E09 - Projections\E09 - Projections.vcxproj", "{0BFF89F3-1A79-4B83-A0EB-7C16FDA662E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -268,6 +272,14 @@ Global
 		{822E40D2-80A1-46EB-AD93-EC28C4F145ED}.Debug|x86.Build.0 = Debug|Win32
 		{822E40D2-80A1-46EB-AD93-EC28C4F145ED}.Release|x86.ActiveCfg = Release|Win32
 		{822E40D2-80A1-46EB-AD93-EC28C4F145ED}.Release|x86.Build.0 = Release|Win32
+		{0D760210-5AB2-4F60-AB46-AA34756861F5}.Debug|x86.ActiveCfg = Debug|Win32
+		{0D760210-5AB2-4F60-AB46-AA34756861F5}.Debug|x86.Build.0 = Debug|Win32
+		{0D760210-5AB2-4F60-AB46-AA34756861F5}.Release|x86.ActiveCfg = Release|Win32
+		{0D760210-5AB2-4F60-AB46-AA34756861F5}.Release|x86.Build.0 = Release|Win32
+		{0BFF89F3-1A79-4B83-A0EB-7C16FDA662E1}.Debug|x86.ActiveCfg = Debug|Win32
+		{0BFF89F3-1A79-4B83-A0EB-7C16FDA662E1}.Debug|x86.Build.0 = Debug|Win32
+		{0BFF89F3-1A79-4B83-A0EB-7C16FDA662E1}.Release|x86.ActiveCfg = Release|Win32
+		{0BFF89F3-1A79-4B83-A0EB-7C16FDA662E1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -314,6 +326,8 @@ Global
 		{7B261D53-3599-4177-A872-44E904FFD788} = {E5B29A97-6872-426A-922D-E5C9D9668483}
 		{40A83E3A-0B83-4640-89C8-5685B9A01734} = {E5B29A97-6872-426A-922D-E5C9D9668483}
 		{822E40D2-80A1-46EB-AD93-EC28C4F145ED} = {A7E7DB91-6013-4894-B0A8-C254F53E4940}
+		{0D760210-5AB2-4F60-AB46-AA34756861F5} = {E5B29A97-6872-426A-922D-E5C9D9668483}
+		{0BFF89F3-1A79-4B83-A0EB-7C16FDA662E1} = {A7E7DB91-6013-4894-B0A8-C254F53E4940}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB03C0C3-8F14-4422-9973-15CA22524188}
