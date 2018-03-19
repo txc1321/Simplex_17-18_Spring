@@ -10,7 +10,7 @@ Date: 2017/05
 class MyMesh {
 public:
 	MyMesh();
-	~MyMesh()
+	~MyMesh();
 };
 
 #endif //__MYMESH_H_
