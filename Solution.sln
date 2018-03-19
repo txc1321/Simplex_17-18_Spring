@@ -102,7 +102,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C15_ProjectionsTaughtInClas
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E09 - Projections", "E09 - Projections\E09 - Projections.vcxproj", "{0BFF89F3-1A79-4B83-A0EB-7C16FDA662E1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E09 - Projections - Solution", "E09 - Projections_Solution\E09 - Projections\E09 - Projections - Solutions.vcxproj", "{188A0327-31E8-42BD-B141-08BB764B4110}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E09 - Projections - Solution", "E09 - Projections_Solution\E09 - Projections - Solutions.vcxproj", "{188A0327-31E8-42BD-B141-08BB764B4110}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
