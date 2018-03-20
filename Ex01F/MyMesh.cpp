@@ -19,10 +19,49 @@ void MyMesh::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivisions,
 
 	// Replace this with your code:
 	//-------------------------------------------------------------------
+	vector3 base(0.0f, 0.0f, 0.0f);
+	vector3 tip(a_fHeight, 0.0f, 0.0f);
+
+	std::vector<vector3> vertices;
+
+	//create the vertices around the base of the cone
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		float angle = (2 * PI * i) / a_nSubdivisions;
+		vector3 vertice(cos(angle), 0, sin(angle));
+
+		//multiply the vertices by the radius
+		vertices.push_back(vertice * vector3(a_fRadius, 1.0f, a_fRadius));
+	}
+
+	//create the triangles along the sides
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddTri(vertices[0], vertices[a_nSubdivisions - 1], base);
+		}
+		else
+		{
+			AddTri(vertices[i + 1], vertices[i], base);
+		}
+	}
+
+	//create triangles along the base
+	for (int i = 0; i < a_nSubdivisions; i++)
+	{
+		if (i == a_nSubdivisions - 1)
+		{
+			AddTri(vertices[a_nSubdivisions - 1], vertices[0], tip);
+		}
+		else
+		{
+			AddTri(vertices[i], vertices[i + 1], tip);
+		}
+	}
 
 
-
-	GenerateCube(a_fRadius, C_RED); //Remember AddTri and AddVertexPosition are your friends. 
+	//GenerateCube(a_fRadius, C_RED); //Remember AddTri and AddVertexPosition are your friends. 
 
 
 

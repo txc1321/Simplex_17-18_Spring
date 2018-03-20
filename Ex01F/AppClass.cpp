@@ -13,8 +13,34 @@ void Application::Display(void)
 #pragma endregion
 	//Your code goes here ---------------------------------------------------------
 	
-	m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu"; //Replace with your name and email
-	vector3 v3CurrentPos; //Initialize this variable accordingly
+	m_sProgrammer = "Tim Carter - txc1321@rit.edu"; //Replace with your name and email
+	vector3 v3CurrentPos = m_v3StopList[0]; //Initialize this variable accordingly
+
+	//Speed
+	float speed = 1.0f;
+	//percentage for the lerp method
+	float percentage = fTimer / speed;
+	//index for the stop number
+	static int index = 0;
+
+	//creates start and end points based off the list, using modulus to ensure
+	//there is no out of bounds error
+	vector3 start = m_v3StopList[index];
+	vector3 end = m_v3StopList[(index + 1) % m_v3StopList.size()];
+
+	//starts the lerp
+	v3CurrentPos = glm::lerp(start, end, percentage);
+
+	//moves to the next point once the lerp is complete
+	if (percentage >= 1.0) {
+		//There is an issue with the increment where the lerp continues to reset to 0
+		//every iteration
+		index++;
+		fTimer = m_pSystem->GetDeltaTime(uClock);
+		//resets index to stop out of bounds error
+		index %= m_v3StopList.size();
+	}
+
 	matrix4 m4Model = glm::translate(IDENTITY_M4, v3CurrentPos) * ToMatrix4(m_qArcBall);
 	
 	
