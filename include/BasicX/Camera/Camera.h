@@ -22,7 +22,7 @@ namespace BasicX
 
 		vector3 m_v3Position = vector3(0.0f, 0.0f, 5.0f);
 		vector3 m_v3Target = vector3(0.0f, 0.0f, 0.0f);
-		vector3 m_v3Top = vector3(0.0f, 1.0f, 0.0f);
+		vector3 m_v3Above = vector3(0.0f, 1.0f, 0.0f);
 
 		vector3 m_v3Forward = vector3(0.0f, 0.0f, -1.0f);
 		vector3 m_v3Upward = vector3(0.0f, 1.0f, 0.0f);

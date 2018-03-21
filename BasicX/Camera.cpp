@@ -25,7 +25,7 @@ void Camera::Swap(Camera& other)
 
 	std::swap(m_v3Position, other.m_v3Position);
 	std::swap(m_v3Target, other.m_v3Target);
-	std::swap(m_v3Top, other.m_v3Top);
+	std::swap(m_v3Above, other.m_v3Above);
 
 	std::swap(m_v3Forward, other.m_v3Forward);
 	std::swap(m_v3Upward, other.m_v3Upward);
@@ -58,7 +58,7 @@ Camera::Camera(Camera const& other)
 
 	m_v3Position = other.m_v3Position;
 	m_v3Target = other.m_v3Target;
-	m_v3Top = other.m_v3Top;
+	m_v3Above = other.m_v3Above;
 
 	m_v3Forward = other.m_v3Forward;
 	m_v3Upward = other.m_v3Upward;
@@ -161,10 +161,10 @@ void Camera::MoveForward(float a_fDistance)
 {
 	m_v3Position += m_v3Forward * a_fDistance;
 	m_v3Target += m_v3Forward * a_fDistance;
-	m_v3Top += m_v3Forward * a_fDistance;
+	m_v3Above += m_v3Forward * a_fDistance;
 
 	m_v3Forward = glm::normalize(m_v3Target - m_v3Position);
-	m_v3Upward = glm::normalize(m_v3Top - m_v3Position);
+	m_v3Upward = glm::normalize(m_v3Above - m_v3Position);
 	m_v3Rightward = glm::normalize(glm::cross(m_v3Forward, m_v3Upward));
 	if (m_nMode != BTO_CAMERAMODE::CAM_PERSP)
 	{
@@ -222,10 +222,10 @@ void Camera::MoveVertical(float a_fDistance)
 {
 	m_v3Position += m_v3Upward * a_fDistance;
 	m_v3Target += m_v3Upward * a_fDistance;
-	m_v3Top += m_v3Upward * a_fDistance;
+	m_v3Above += m_v3Upward * a_fDistance;
 
 	m_v3Forward = glm::normalize(m_v3Target - m_v3Position);
-	m_v3Upward = glm::normalize(m_v3Top - m_v3Position);
+	m_v3Upward = glm::normalize(m_v3Above - m_v3Position);
 	m_v3Rightward = glm::normalize(glm::cross(m_v3Forward, m_v3Upward));
 	if (m_nMode != BTO_CAMERAMODE::CAM_PERSP)
 	{
@@ -236,10 +236,10 @@ void Camera::MoveSideways(float a_fDistance)
 {
 	m_v3Position += m_v3Rightward * a_fDistance;
 	m_v3Target += m_v3Rightward * a_fDistance;
-	m_v3Top += m_v3Rightward * a_fDistance;
+	m_v3Above += m_v3Rightward * a_fDistance;
 
 	m_v3Forward = glm::normalize(m_v3Target - m_v3Position);
-	m_v3Upward = glm::normalize(m_v3Top - m_v3Position);
+	m_v3Upward = glm::normalize(m_v3Above - m_v3Position);
 	m_v3Rightward = glm::normalize(glm::cross(m_v3Forward, m_v3Upward));
 	if (m_nMode != BTO_CAMERAMODE::CAM_PERSP)
 	{
@@ -264,7 +264,7 @@ void Camera::SetPositionTargetAndUp(vector3 a_v3Position, vector3 a_v3Target, ve
 	m_v3Target = a_v3Target;
 	m_v3Upward = glm::normalize(a_v3Upward);
 
-	m_v3Top = a_v3Position + m_v3Upward;
+	m_v3Above = a_v3Position + m_v3Upward;
 	m_v3Forward = glm::normalize(m_v3Target - m_v3Position);
 	m_v3Rightward = glm::normalize(glm::cross(m_v3Forward, m_v3Upward));
 	CalculateProjection();
@@ -279,7 +279,7 @@ void Camera::ResetCamera(void)
 	default:
 		m_v3Position = vector3(0.0f, 0.0f, 10.0f);
 		m_v3Target = vector3(0.0f, 0.0f, 9.0f);
-		m_v3Top = vector3(0.0f, 1.0f, 10.0f);
+		m_v3Above = vector3(0.0f, 1.0f, 10.0f);
 
 		m_v3Forward = vector3(0.0f, 0.0f, -1.0f);
 		m_v3Upward = vector3(0.0f, 1.0f, 0.0f);
@@ -289,7 +289,7 @@ void Camera::ResetCamera(void)
 		m_v3PitchYawRoll = vector3(0.0f);
 		m_v3Position = vector3(10.0f, 0.0f, 0.0f);
 		m_v3Target = vector3(9.0f, 0.0f, 0.0f);
-		m_v3Top = vector3(10.0f, 1.0f, 0.0f);
+		m_v3Above = vector3(10.0f, 1.0f, 0.0f);
 
 		m_v3Forward = vector3(-1.0f, 0.0f, 0.0f);
 		m_v3Upward = vector3(0.0f, 1.0f, 0.0f);
@@ -299,7 +299,7 @@ void Camera::ResetCamera(void)
 		m_v3PitchYawRoll = vector3(0.0f);
 		m_v3Position = vector3(0.0f, 10.0f, 0.0f);
 		m_v3Target = vector3(0.0f, 9.0f, 0.0f);
-		m_v3Top = vector3(0.0f, 10.0f, -1.0f);
+		m_v3Above = vector3(0.0f, 10.0f, -1.0f);
 
 		m_v3Forward = vector3(0.0f, -1.0f, 0.0f);
 		m_v3Upward = vector3(0.0f, 0.0f, -1.0f);
@@ -309,7 +309,7 @@ void Camera::ResetCamera(void)
 		m_v3PitchYawRoll = vector3(0.0f);
 		m_v3Position = vector3(0.0f, 0.0f, 10.0f);
 		m_v3Target = vector3(0.0f, 0.0f, 9.0f);
-		m_v3Top = vector3(0.0f, 1.0f, 10.0f);
+		m_v3Above = vector3(0.0f, 1.0f, 10.0f);
 
 		m_v3Forward = vector3(0.0f, 0.0f, -1.0f);
 		m_v3Upward = vector3(0.0f, 1.0f, 0.0f);
