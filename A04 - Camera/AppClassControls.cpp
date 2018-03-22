@@ -67,10 +67,39 @@ void Application::ProcessMouseScroll(sf::Event a_event)
 //Keyboard
 void Application::ProcessKeyPressed(sf::Event a_event)
 {
+	static bool bFPSControl = false;
+	vector3 v3Pos;
 	switch (a_event.key.code)
 	{
 	default: break;
 	case sf::Keyboard::Space:
+		break;
+	case sf::Keyboard::W:
+		v3Pos = m_pCamera->GetPosition();
+		m_pCamera->SetPosition(v3Pos + vector3(0.0f, 0.0f, -0.1f));
+		m_pCamera->SetTarget(v3Pos + vector3(0.0f, 0.0f, -1.0f));
+		m_pCamera->SetUp(vector3(0.0f, 1.0f, 0.0f));
+		break;
+
+	case sf::Keyboard::A:
+		v3Pos = m_pCamera->GetPosition();
+		m_pCamera->SetPosition(v3Pos + vector3(-0.1f, 0.0f, 0.0f));
+		m_pCamera->SetTarget(v3Pos + vector3(-0.1f, 0.0f, 0.0f) + vector3(0.0f, 0.0f, -1.0f));
+		m_pCamera->SetUp(vector3(0.0f, 1.0f, 0.0f));
+		break;
+
+	case sf::Keyboard::S:
+		v3Pos = m_pCamera->GetPosition();
+		m_pCamera->SetPosition(v3Pos + vector3(0.0f, 0.0f, 0.1f));
+		m_pCamera->SetTarget(v3Pos + vector3(0.0f, 0.0f, -1.0f));
+		m_pCamera->SetUp(vector3(0.0f, 1.0f, 0.0f));
+		break;
+
+	case sf::Keyboard::D:
+		v3Pos = m_pCamera->GetPosition();
+		m_pCamera->SetPosition(v3Pos + vector3(0.1f, 0.0f, 0.0f));
+		m_pCamera->SetTarget(v3Pos + vector3(0.1f, 0.0f, 0.0f) + vector3(0.0f, 0.0f, -1.0f));
+		m_pCamera->SetUp(vector3(0.0f, 1.0f, 0.0f));
 		break;
 	}
 	//gui
@@ -123,17 +152,17 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 			}
 		}
 		break;
-	case sf::Keyboard::W:
+	/*case sf::Keyboard::W:
 		v3Pos = m_pCamera->GetPosition();
 		m_pCamera->SetPosition(v3Pos + vector3(0.0f, 0.0f, -0.1f));
-		m_pCamera->SetTarget(v3Pos + vector3(0.0f, 0.0f, -1.0f));
+		m_pCamera->SetTarget(v3Pos + vector3(0.0f, 0.0f, -1.0f)); 
 		m_pCamera->SetUp(vector3(0.0f, 1.0f, 0.0f));
 		break;
 
 	case sf::Keyboard::A:
 		v3Pos = m_pCamera->GetPosition();
-		m_pCamera->SetPosition(v3Pos + vector3(0.1f, 0.0f, 0.0f));
-		m_pCamera->SetTarget(v3Pos + vector3(0.1f, 0.0f, 0.0f) + vector3(0.0f, 0.0f, -1.0f));
+		m_pCamera->SetPosition(v3Pos + vector3(-0.1f, 0.0f, 0.0f));
+		m_pCamera->SetTarget(v3Pos + vector3(-0.1f, 0.0f, 0.0f) + vector3(0.0f, 0.0f, -1.0f));
 		m_pCamera->SetUp(vector3(0.0f, 1.0f, 0.0f));
 		break;
 
@@ -146,10 +175,10 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 
 	case sf::Keyboard::D:
 		v3Pos = m_pCamera->GetPosition();
-		m_pCamera->SetPosition(v3Pos + vector3(-0.1f, 0.0f, 0.0f));
-		m_pCamera->SetTarget(v3Pos + vector3(-0.1f, 0.0f, 0.0f) + vector3(0.0f, 0.0f, -1.0f));
+		m_pCamera->SetPosition(v3Pos + vector3(0.1f, 0.0f, 0.0f));
+		m_pCamera->SetTarget(v3Pos + vector3(0.1f, 0.0f, 0.0f) + vector3(0.0f, 0.0f, -1.0f));
 		m_pCamera->SetUp(vector3(0.0f, 1.0f, 0.0f));
-		break;
+		break;*/
 
 	}
 
